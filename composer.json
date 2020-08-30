@@ -1,0 +1,13 @@
+{
+    "name": "s/mvc.dev",
+    "description": "custom mvc",
+    "type": "project",
+    "license": "MIT",
+    "require": {},
+
+    "autoload": {
+        "psr-2": {
+            "App\\": "app/"
+        }
+    }
+}
