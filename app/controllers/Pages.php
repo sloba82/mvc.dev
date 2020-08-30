@@ -8,11 +8,12 @@ class Pages extends Controller {
     }
 
     public function index(){
-        $this->view('hello', [ 'text' => 'Some text']);
+        $this->view('pages/index');
     }
 
     public function about($id) {
-        echo $id;
+var_dump($id);
+        $this->view('pages/about');
     }
 
 }
