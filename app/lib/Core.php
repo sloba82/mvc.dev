@@ -3,7 +3,7 @@
 class Core
 {
 
-    protected $currentController = '';
+    protected $currentController = 'Home';
     protected $currentMethod = 'index';
     protected $params = [];
 
@@ -12,11 +12,11 @@ class Core
         $url = $this->getUrl();
 
         if (file_exists('../app/controllers/' . ucwords($url[0]) . '.php')) {
-      
+
             $this->currentController = ucwords($url[0]);
             unset($url[0]);
         }
- 
+
         require_once '../app/controllers/' . $this->currentController . '.php';
         $this->currentController = new $this->currentController;
 
@@ -28,13 +28,11 @@ class Core
         }
 
         //Get params
-
-       
         $this->params = $url ? array_values($url) : [];
+        // Instantiate controller
+        $controller = new $this->currentController();
+        $controller->{$this->currentMethod}($this->params);
 
-    
-        //Call a callback with array of params
-        call_user_func_array([$this->currentController, $this->currentMethod], $this->params);
     }
 
     public function getUrl()
@@ -43,7 +41,7 @@ class Core
         $url = filter_var($url, FILTER_SANITIZE_URL);
         $url = explode('/', $url);
 
-       
+
         return  $url;
     }
 }
