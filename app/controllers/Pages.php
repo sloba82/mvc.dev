@@ -5,13 +5,23 @@
 
 class Pages extends Controller {
 
+    private $postModel;
+
     public function __construct()
     {
-       echo "!! pages !!!";
+      $this->postModel = $this->model('Post');
     }
 
     public function index(){
-        $this->view('pages/index', [ 'title' =>  'some title']);
+
+        var_dump($this->postModel->getPosts());
+        $data = [
+            'title' => 'Pages title',
+            'posts' => $this->postModel->getPosts(),
+        ];
+
+       
+        $this->view('pages/index', $data);
     }
 
     public function about($id) 
