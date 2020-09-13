@@ -1,8 +1,6 @@
 <?php
 
 
-
-
 class Pages extends Controller {
 
     private $postModel;
@@ -26,7 +24,7 @@ class Pages extends Controller {
 
     public function about($id) 
     {
-
+        var_dump($id);
         $this->view('pages/about', ['text'=> 'some text']);
     }
 
