@@ -1,7 +1,7 @@
 <?php
 
 
-class Validation
+class Validator
 {
     /**
      * Method for sanitizing input data.
@@ -47,8 +47,6 @@ class Validation
      * @return int
      */
     public static function Alpha($input){
-
-        var_dump($input);
         $exp = "/^[a-zA-Z]/";
         return preg_match($exp,$input);
     }
